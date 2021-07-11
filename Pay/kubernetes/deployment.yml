@@ -22,9 +22,10 @@ spec:
             - -c
             - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
           readinessProbe:
-            httpGet:
-              path: '/actuator/health'
-              port: 8080
+            exec:
+              command:
+              - cat
+              - /tmp/healthy
             initialDelaySeconds: 10
             timeoutSeconds: 2
             periodSeconds: 5
